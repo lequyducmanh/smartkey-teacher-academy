@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SmartKey Teacher Academy – Đào tạo giáo viên Tiền Tiểu Học</title>
+<meta name="description" content="Chương trình đào tạo giáo viên Tiền Tiểu Học thực chiến theo phương pháp SmartKey: nhận diện chữ, đánh vần, luyện đọc, luyện viết, sửa lỗi và đánh giá tiến bộ theo lộ trình 60 buổi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#182136;font-family:'Be Vietnam Pro',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+a{color:#2F5BD3}a:hover{color:#0E1E3D}
+input,select,textarea,button{font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#2F5BD3 !important;box-shadow:0 0 0 4px rgba(76,123,243,.18)}
+::placeholder{color:#7A8397}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes zoomIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+@keyframes slideL{from{opacity:0;transform:translateX(-48px)}to{opacity:1;transform:none}}
+@keyframes slideR{from{opacity:0;transform:translateX(48px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,-40px) scale(1.15)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes write{0%{stroke-dashoffset:1}45%,80%{stroke-dashoffset:0;opacity:1}95%{opacity:0;stroke-dashoffset:0}100%{opacity:0;stroke-dashoffset:1}}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(242,181,68,.55)}100%{box-shadow:0 0 0 18px rgba(242,181,68,0)}}
+@keyframes ping{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.4);opacity:0}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes flow{to{stroke-dashoffset:-56}}
+@keyframes pop{0%{opacity:0;transform:scale(.4)}60%{opacity:1;transform:scale(1.1)}100%{opacity:1;transform:scale(1)}}
+@keyframes popLoop{0%,8%{opacity:0;transform:scale(.4)}16%{opacity:1;transform:scale(1.1)}22%,88%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.9)}}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+@keyframes wave{0%,100%{opacity:.15}50%{opacity:1}}
+@keyframes flag{0%,100%{transform:skewY(0)}50%{transform:skewY(-6deg)}}
+@keyframes shine{from{transform:translateX(-150%) skewX(-20deg)}to{transform:translateX(350%) skewX(-20deg)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.a-up{animation:fadeUp 1s cubic-bezier(.2,.75,.2,1) both}
+.a-zoom{animation:zoomIn 1.2s cubic-bezier(.2,.75,.2,1) both}
+.d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}.d4{animation-delay:.42s}.d5{animation-delay:.56s}.d6{animation-delay:.7s}.d7{animation-delay:.85s}.d8{animation-delay:1s}
+.float{animation:float 6s ease-in-out infinite}
+.float2{animation:float 7.5s ease-in-out -2.5s infinite}
+.float3{animation:float 8.5s ease-in-out -4s infinite}
+.bob{animation:bob 7s ease-in-out infinite}
+.bob2{animation:bob 8s ease-in-out -3s infinite}
+.orb{animation:drift 18s ease-in-out infinite}
+.orb2{animation:drift 22s ease-in-out -8s infinite reverse}
+.marq{animation:marquee 38s linear infinite}
+.marq:hover{animation-play-state:paused}
+.spin{animation:spin 40s linear infinite;transform-origin:center;transform-box:fill-box}
+.flow{stroke-dasharray:10 18;animation:flow 1.8s linear infinite}
+.pulse{animation:pulse 2s ease-out infinite}
+.ping{animation:ping 2s cubic-bezier(0,0,.2,1) infinite}
+.bar{transform-origin:bottom;transform-box:fill-box;animation:grow 1.4s cubic-bezier(.2,.75,.2,1) both}
+.hbar{transform-origin:left;animation:growX 1.6s cubic-bezier(.2,.75,.2,1) both}
+.write{stroke-dasharray:1;stroke-dashoffset:1;animation:write 5s ease-in-out infinite}
+.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.2s ease-out .6s forwards}
+.pop{transform-origin:center;transform-box:fill-box;animation:pop .8s cubic-bezier(.2,.75,.2,1) both}
+.popl{transform-origin:center;transform-box:fill-box;animation:popLoop 6s ease-in-out infinite}
+.tw{transform-origin:center;transform-box:fill-box;animation:twinkle 2.6s ease-in-out infinite}
+.wave{animation:wave 1.6s ease-in-out infinite}
+.flag{transform-origin:left center;transform-box:fill-box;animation:flag 2.4s ease-in-out infinite}
+.blink{animation:blink 1.6s ease-in-out infinite}
+
+.lift{transition:transform .4s cubic-bezier(.2,.75,.2,1),box-shadow .4s,border-color .4s,background-color .4s}
+.lift:hover{transform:translateY(-8px);box-shadow:0 28px 56px -18px rgba(14,30,61,.25);border-color:#C9D5F2 !important}
+.lift-d{transition:transform .4s cubic-bezier(.2,.75,.2,1),background-color .4s,border-color .4s}
+.lift-d:hover{transform:translateY(-6px);background-color:rgba(255,255,255,.1) !important;border-color:rgba(242,181,68,.6) !important}
+.row{transition:transform .35s cubic-bezier(.2,.75,.2,1),background-color .35s,border-color .35s}
+.row:hover{transform:translateX(8px);background-color:rgba(255,255,255,.1) !important;border-color:rgba(242,181,68,.55) !important}
+.ico{transition:transform .5s cubic-bezier(.2,.75,.2,1)}
+.lift:hover .ico{transform:rotate(-8deg) scale(1.08)}
+.btn{position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.2,.75,.2,1),box-shadow .3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 16px 36px -8px rgba(242,181,68,.55)}
+.btn::after{content:"";position:absolute;top:0;bottom:0;left:0;width:35%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-150%) skewX(-20deg);pointer-events:none}
+.btn:hover::after{animation:shine .9s ease}
+.ghost{transition:background-color .3s,border-color .3s}
+.ghost:hover{background-color:rgba(255,255,255,.08);border-color:rgba(255,255,255,.6) !important}
+.nav a.nl{position:relative}
+.nav a.nl::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;background:#F2B544;transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.nav a.nl:hover::after{transform:scaleX(1)}
+.play{transition:transform .35s cubic-bezier(.2,.75,.2,1)}
+.vid:hover .play{transform:scale(1.12)}
+
+@supports (animation-timeline: view()){
+.rv{animation:fadeUp linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+.rv-l{animation:slideL linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+.rv-r{animation:slideR linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+.rv-z{animation:zoomIn linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+.rv-x{transform-origin:left;animation:growX linear both;animation-timeline:view();animation-range:entry 10% cover 40%}
+}
+@media (max-width: 900px){.hide-sm{display:none !important}}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}.write,.draw{stroke-dashoffset:0 !important}}
+</style>
+</head>
+<body>
+<div style="width: 100%; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #182136; background: #FFFFFF; line-height: 1.6; overflow-x: hidden">
+
+<!-- ================= HERO ================= -->
+<section id="top" style="position: relative; overflow: hidden; background: #0E1E3D; color: #FFFFFF">
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px); background-size: 56px 56px; -webkit-mask-image: radial-gradient(ellipse 80% 70% at 60% 40%, #000 30%, transparent 80%); mask-image: radial-gradient(ellipse 80% 70% at 60% 40%, #000 30%, transparent 80%)"></div>
+<div aria-hidden="true" class="orb" style="position: absolute; width: 620px; height: 620px; right: -120px; top: -160px; border-radius: 50%; background: radial-gradient(circle, rgba(76,123,243,0.42), rgba(76,123,243,0) 68%)"></div>
+<div aria-hidden="true" class="orb2" style="position: absolute; width: 520px; height: 520px; left: -180px; bottom: -220px; border-radius: 50%; background: radial-gradient(circle, rgba(242,181,68,0.26), rgba(242,181,68,0) 68%)"></div>
+
+<!-- Header -->
+<header class="a-up" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 22px clamp(16px, 4vw, 40px) 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 10px 10px 18px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px)">
+<a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #FFFFFF">
+<span style="width: 40px; height: 40px; border-radius: 12px; background: #F2B544; display: flex; align-items: center; justify-content: center; color: #0E1E3D"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"></circle><path d="m10.85 12.15 8.65-8.65"></path><path d="m18 5 2 2"></path><path d="m15 8 2 2"></path></svg></span>
+<span style="display: flex; flex-direction: column; line-height: 1.15">
+<span style="font-weight: 800; font-size: 16px; letter-spacing: 0.5px">SmartKey</span>
+<span style="font-size: 11px; letter-spacing: 2.5px; color: #C4CCDB">TEACHER ACADEMY</span>
+</span>
+</a>
+<nav class="nav" aria-label="Điều hướng chính" style="display: flex; flex-wrap: wrap; align-items: center; gap: 2px 26px; font-size: 14px; font-weight: 500">
+<a class="nl" href="#phuong-phap" style="color: #E6EAF2; text-decoration: none; padding: 12px 0">Phương pháp</a>
+<a class="nl" href="#lo-trinh" style="color: #E6EAF2; text-decoration: none; padding: 12px 0">Lộ trình 60 buổi</a>
+<a class="nl" href="#khoa-hoc" style="color: #E6EAF2; text-decoration: none; padding: 12px 0">Khóa đào tạo</a>
+<a class="nl" href="#quyen-loi" style="color: #E6EAF2; text-decoration: none; padding: 12px 0">Quyền lợi</a>
+<a class="btn" href="#dang-ky" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 22px; border-radius: 999px; background: #F2B544; color: #0E1E3D; text-decoration: none; font-weight: 700">Đăng ký tư vấn</a>
+</nav>
+</div>
+</header>
+
+<!-- Hero content -->
+<div style="position: relative; max-width: 1240px; margin: 0 auto; padding: clamp(48px, 7vw, 88px) clamp(16px, 4vw, 40px) clamp(72px, 9vw, 120px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: clamp(48px, 6vw, 72px); align-items: center">
+<div style="display: flex; flex-direction: column; gap: 26px">
+<span class="a-up d1" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px 8px 12px; border-radius: 999px; background: rgba(242,181,68,0.12); border: 1px solid rgba(242,181,68,0.35); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; color: #F2B544">
+<span style="position: relative; width: 10px; height: 10px; display: inline-block"><span class="ping" style="position: absolute; inset: 0; border-radius: 50%; background: #F2B544"></span><span style="position: absolute; inset: 0; border-radius: 50%; background: #F2B544"></span></span>
+SMARTKEY TEACHER ACADEMY</span>
+<h1 class="a-up d2" style="margin: 0; font-weight: 800; font-size: clamp(36px, 5vw, 62px); line-height: 1.1; letter-spacing: -1.6px">Trở thành giáo viên Tiền Tiểu Học <span style="color: #F2B544">có phương pháp</span>, có kỹ năng và <span style="position: relative; white-space: nowrap">tự tin đứng lớp<svg aria-hidden="true" viewBox="0 0 300 20" preserveAspectRatio="none" style="position: absolute; left: 0; bottom: -10px; width: 100%; height: 14px"><path class="draw" pathLength="1" d="M4 14 C 60 4, 140 4, 200 9 S 280 14, 296 6" fill="none" stroke="#F2B544" stroke-width="5" stroke-linecap="round"></path></svg></span></h1>
+<p class="a-up d3" style="margin: 0; font-size: clamp(17px, 1.6vw, 20px); font-weight: 500; line-height: 1.5; color: #FFFFFF">Học để hiểu trẻ <span style="color: #F2B544">—</span> Thực hành để biết dạy <span style="color: #F2B544">—</span> Phát triển nghề nghiệp bằng năng lực thực sự.</p>
+<p class="a-up d4" style="margin: 0; font-size: 16px; color: #C4CCDB; max-width: 580px">Chương trình đào tạo giáo viên Tiền Tiểu Học thực chiến theo phương pháp SmartKey, giúp học viên nắm vững cách hướng dẫn trẻ nhận diện chữ, đánh vần, luyện đọc, luyện viết, sửa lỗi và đánh giá tiến bộ theo lộ trình 60 buổi. Không chỉ học lý thuyết — học viên được quan sát bài dạy, thực hành, nhận phản hồi và đánh giá năng lực.</p>
+<div class="a-up d5" style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center">
+<a class="btn pulse" href="#dang-ky" style="display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 30px; border-radius: 999px; background: #F2B544; color: #0E1E3D; text-decoration: none; font-weight: 700; font-size: 15px">Đăng ký tư vấn lộ trình đào tạo<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></a>
+<a class="ghost" href="#phuong-phap" style="display: inline-flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 26px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.3); color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>Xem phương pháp</a>
+</div>
+<div class="a-up d6" style="display: flex; flex-wrap: wrap; gap: 14px 32px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.12)">
+<div style="display: flex; flex-direction: column"><span style="font-size: 30px; font-weight: 800; line-height: 1.1">8<span style="font-size: 15px; font-weight: 600; color: #C4CCDB"> tuần</span></span><span style="font-size: 13px; color: #9AA5BA">Lộ trình đề xuất</span></div>
+<div style="display: flex; flex-direction: column"><span style="font-size: 30px; font-weight: 800; line-height: 1.1">16<span style="font-size: 15px; font-weight: 600; color: #C4CCDB"> buổi</span></span><span style="font-size: 13px; color: #9AA5BA">Học &amp; thực hành</span></div>
+<div style="display: flex; flex-direction: column"><span style="font-size: 30px; font-weight: 800; line-height: 1.1">5<span style="font-size: 15px; font-weight: 600; color: #C4CCDB"> học phần</span></span><span style="font-size: 13px; color: #9AA5BA">Chuyên môn</span></div>
+</div>
+<p class="a-up d7" style="margin: 0; font-size: 14px; color: #9AA5BA">Dành cho giáo viên mầm non, giáo viên tiểu học, gia sư và người đã có kinh nghiệm làm việc với trẻ nhỏ.</p>
+</div>
+
+<!-- Hero illustration -->
+<div class="a-zoom d3" style="position: relative; width: 100%; max-width: 600px; justify-self: center">
+<svg role="img" aria-label="Minh hoạ bảng ghép vần b + a = ba, vở ô ly và khối chữ cái" viewBox="0 0 560 520" style="width: 100%; height: auto; display: block; overflow: visible">
+<circle class="spin" cx="280" cy="250" r="236" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1.5" stroke-dasharray="3 12"></circle>
+<circle cx="280" cy="250" r="176" fill="rgba(76,123,243,0.10)"></circle>
+<!-- board shadow + board -->
+<rect x="78" y="92" width="404" height="318" rx="30" fill="rgba(0,0,0,0.25)"></rect>
+<rect x="70" y="80" width="404" height="318" rx="30" fill="#FFFFFF"></rect>
+<circle cx="102" cy="112" r="6" fill="#F27A5E"></circle>
+<circle cx="122" cy="112" r="6" fill="#F2B544"></circle>
+<circle cx="142" cy="112" r="6" fill="#3DBE9B"></circle>
+<text x="442" y="117" text-anchor="end" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="13" font-weight="600" fill="#5A6478">Bài 12 · Vần a</text>
+<!-- tiles -->
+<g class="popl" style="animation-delay: 0s"><rect x="100" y="140" width="80" height="80" rx="20" fill="#E8EEFF"></rect><text x="140" y="196" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="46" font-weight="800" fill="#2F5BD3">b</text></g>
+<text x="200" y="192" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="30" font-weight="700" fill="#9AA5BA">+</text>
+<g class="popl" style="animation-delay: .25s"><rect x="220" y="140" width="80" height="80" rx="20" fill="#FFF1D6"></rect><text x="260" y="196" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="46" font-weight="800" fill="#B07400">a</text></g>
+<text x="320" y="192" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="30" font-weight="700" fill="#9AA5BA">=</text>
+<g class="popl" style="animation-delay: .5s"><rect x="340" y="140" width="104" height="80" rx="20" fill="#0E1E3D"></rect><text x="392" y="196" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="44" font-weight="800" fill="#FFFFFF">ba</text></g>
+<!-- o ly notebook area -->
+<rect x="100" y="242" width="344" height="124" rx="16" fill="#F5F7FB"></rect>
+<g stroke="#DDE4F0" stroke-width="1">
+<line x1="112" y1="262" x2="432" y2="262"></line><line x1="112" y1="280" x2="432" y2="280"></line><line x1="112" y1="298" x2="432" y2="298"></line><line x1="112" y1="316" x2="432" y2="316"></line><line x1="112" y1="334" x2="432" y2="334"></line><line x1="112" y1="352" x2="432" y2="352"></line>
+<line x1="148" y1="254" x2="148" y2="358"></line><line x1="220" y1="254" x2="220" y2="358"></line><line x1="292" y1="254" x2="292" y2="358"></line><line x1="364" y1="254" x2="364" y2="358"></line>
+</g>
+<line x1="112" y1="334" x2="432" y2="334" stroke="#F27A5E" stroke-opacity="0.45" stroke-width="1.2"></line>
+<path class="write" pathLength="1" d="M132 334 C 136 312, 142 286, 146 268 C 148 260, 156 262, 153 272 C 149 292, 143 314, 140 334 C 145 316, 158 306, 168 310 C 178 314, 176 332, 164 335 C 156 337, 148 333, 146 328 M 186 316 C 194 306, 212 306, 214 320 C 216 334, 200 339, 192 330 C 186 322, 200 308, 214 314 C 216 324, 214 332, 226 334 M 248 316 C 256 306, 274 306, 276 320 C 278 334, 262 339, 254 330 C 248 322, 262 308, 276 314 C 278 324, 276 332, 290 334" fill="none" stroke="#2F5BD3" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path>
+<!-- pencil -->
+<g transform="translate(300 300) rotate(-38)"><g class="float2">
+<rect x="0" y="-9" width="118" height="18" rx="3" fill="#F2B544"></rect>
+<rect x="0" y="-9" width="118" height="6" rx="3" fill="#F7CB72"></rect>
+<rect x="104" y="-9" width="14" height="18" fill="#C9CFDB"></rect>
+<rect x="118" y="-9" width="16" height="18" rx="4" fill="#F27A5E"></rect>
+<path d="M0 -9 L -26 0 L 0 9 Z" fill="#F6D9AE"></path>
+<path d="M-17 -3 L -26 0 L -17 3 Z" fill="#182136"></path>
+</g></g>
+<!-- alphabet cubes -->
+<g transform="translate(14 372)"><g class="bob">
+<polygon points="0,16 16,0 88,0 72,16" fill="#8FB0FA"></polygon><polygon points="72,16 88,0 88,72 72,88" fill="#3A63CF"></polygon><rect x="0" y="16" width="72" height="72" rx="6" fill="#4C7BF3"></rect>
+<text x="36" y="66" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="40" font-weight="800" fill="#FFFFFF">A</text>
+</g></g>
+<g transform="translate(440 18)"><g class="bob2">
+<polygon points="0,14 14,0 78,0 64,14" fill="#F7CB72"></polygon><polygon points="64,14 78,0 78,64 64,78" fill="#C98E1F"></polygon><rect x="0" y="14" width="64" height="64" rx="6" fill="#F2B544"></rect>
+<text x="32" y="60" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="34" font-weight="800" fill="#0E1E3D">Ă</text>
+</g></g>
+<g transform="translate(470 418)"><g class="float3">
+<polygon points="0,12 12,0 68,0 56,12" fill="#7FD9BF"></polygon><polygon points="56,12 68,0 68,56 56,68" fill="#2A9A7B"></polygon><rect x="0" y="12" width="56" height="56" rx="6" fill="#3DBE9B"></rect>
+<text x="28" y="52" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="30" font-weight="800" fill="#FFFFFF">B</text>
+</g></g>
+<!-- sparkles -->
+<path class="tw" d="M36 120 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z" fill="#F2B544"></path>
+<path class="tw" style="animation-delay: 1.2s" d="M520 250 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#FFFFFF"></path>
+<path class="tw" style="animation-delay: .6s" d="M240 30 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#8FB0FA"></path>
+</svg>
+
+<!-- floating chips -->
+<div class="float2" style="position: absolute; left: -2%; top: 2%; display: flex; align-items: center; gap: 10px; padding: 10px 16px 10px 10px; border-radius: 16px; background: #FFFFFF; color: #182136; box-shadow: 0 18px 40px -12px rgba(0,0,0,0.45)">
+<span style="width: 32px; height: 32px; border-radius: 10px; background: #E3F7F0; color: #1F8A6B; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+<span style="display: flex; flex-direction: column; line-height: 1.25"><span style="font-size: 13px; font-weight: 700">Đánh vần đúng</span><span style="font-size: 12px; color: #5A6478">bờ – a – ba</span></span>
+</div>
+<div class="float3" style="position: absolute; right: -3%; top: 40%; width: 168px; padding: 14px 16px; border-radius: 18px; background: #FFFFFF; color: #182136; box-shadow: 0 18px 40px -12px rgba(0,0,0,0.45); display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 700; color: #5A6478">Tiến bộ của trẻ</span>
+<div style="display: flex; align-items: flex-end; gap: 8px; height: 56px">
+<span class="bar d3" style="flex: 1; height: 30%; border-radius: 6px; background: #DCE5FD"></span>
+<span class="bar d4" style="flex: 1; height: 48%; border-radius: 6px; background: #B7CAFB"></span>
+<span class="bar d5" style="flex: 1; height: 62%; border-radius: 6px; background: #8FB0FA"></span>
+<span class="bar d6" style="flex: 1; height: 80%; border-radius: 6px; background: #4C7BF3"></span>
+<span class="bar d7" style="flex: 1; height: 100%; border-radius: 6px; background: #F2B544"></span>
+</div>
+</div>
+<div class="float" style="position: absolute; left: 10%; bottom: -2%; display: flex; align-items: center; gap: 12px; padding: 10px 18px 10px 10px; border-radius: 16px; background: #FFFFFF; color: #182136; box-shadow: 0 18px 40px -12px rgba(0,0,0,0.45)">
+<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="#EEF1F7" stroke-width="5"></circle><circle class="draw" pathLength="1" cx="20" cy="20" r="16" fill="none" stroke="#F2B544" stroke-width="5" stroke-linecap="round" transform="rotate(-90 20 20)"></circle></svg>
+<span style="display: flex; flex-direction: column; line-height: 1.25"><span style="font-size: 13px; font-weight: 700">Lộ trình 60 buổi</span><span style="font-size: 12px; color: #5A6478">30 đánh vần + 30 luyện viết</span></span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<section aria-label="Kỹ năng trọng tâm" style="overflow: hidden; background: #FFFFFF; padding: 26px 0">
+<div style="transform: rotate(-1.4deg); width: 110%; margin-left: -5%; background: #F2B544; color: #0E1E3D; padding: 16px 0; overflow: hidden">
+<div class="marq" style="display: flex; width: max-content; gap: 40px; align-items: center; font-size: clamp(17px, 1.8vw, 22px); font-weight: 700; white-space: nowrap">
+<span>Nhận diện chữ</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span>Đánh vần</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span>Luyện đọc</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span>Luyện viết</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span>Sửa lỗi</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span>Đánh giá tiến bộ</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span>Tư thế ngồi &amp; cầm bút</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span>Trao đổi với phụ huynh</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span aria-hidden="true">Nhận diện chữ</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span aria-hidden="true">Đánh vần</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span aria-hidden="true">Luyện đọc</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span aria-hidden="true">Luyện viết</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span aria-hidden="true">Sửa lỗi</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span aria-hidden="true">Đánh giá tiến bộ</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span aria-hidden="true">Tư thế ngồi &amp; cầm bút</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+<span aria-hidden="true">Trao đổi với phụ huynh</span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 15 9 24 12 15 15 12 24 9 15 0 12 9 9z" fill="#0E1E3D"></path></svg>
+</div>
+</div>
+</section>
+
+<!-- ================= 02 PAIN POINTS ================= -->
+<section style="background: #FFFFFF">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 7vw, 96px) clamp(16px, 4vw, 40px) clamp(64px, 8vw, 112px); display: flex; flex-direction: column; gap: 48px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 48px; align-items: center">
+<div class="rv-l" style="display: flex; flex-direction: column; gap: 18px">
+<span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #FFF4DC; color: #8A5A00; font-size: 13px; font-weight: 700; letter-spacing: 1px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #F2B544"></span>02 · THÁCH THỨC KHI ĐỨNG LỚP</span>
+<h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.15; letter-spacing: -1.2px; color: #0E1E3D">Có phải bạn đang gặp những khó khăn này?</h2>
+<p style="margin: 0; font-size: 18px; color: #5A6478">Bạn yêu trẻ, kiên nhẫn với trẻ nhưng đôi khi vẫn cảm thấy lúng túng khi dạy?</p>
+</div>
+<div class="rv-r" style="justify-self: center; width: 100%; max-width: 480px">
+<svg role="img" aria-label="Minh hoạ trang vở với các chữ b, d, p, q dễ nhầm lẫn và dấu hỏi" viewBox="0 0 480 300" style="width: 100%; height: auto; display: block">
+<circle cx="240" cy="160" r="130" fill="#F4F6FA"></circle>
+<g transform="rotate(-5 240 160)">
+<rect x="96" y="58" width="288" height="200" rx="22" fill="#E4E8F0"></rect>
+<rect x="88" y="48" width="288" height="200" rx="22" fill="#FFFFFF" stroke="#E4E8F0" stroke-width="1.5"></rect>
+<g stroke="#E8EDF5" stroke-width="1.2"><line x1="110" y1="100" x2="354" y2="100"></line><line x1="110" y1="140" x2="354" y2="140"></line><line x1="110" y1="180" x2="354" y2="180"></line><line x1="110" y1="220" x2="354" y2="220"></line></g>
+<text x="130" y="134" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="44" font-weight="700" fill="#2F5BD3">b</text>
+<text x="190" y="134" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="44" font-weight="700" fill="#2F5BD3">d</text>
+<text x="250" y="134" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="44" font-weight="700" fill="#2F5BD3">p</text>
+<text x="306" y="134" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="44" font-weight="700" fill="#2F5BD3">q</text>
+<ellipse class="write" pathLength="1" cx="203" cy="118" rx="26" ry="30" fill="none" stroke="#F27A5E" stroke-width="3.5" stroke-linecap="round"></ellipse>
+<text x="130" y="205" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="26" font-style="italic" font-weight="500" fill="#9AA5BA">b + a = ?</text>
+</g>
+<g transform="translate(392 60)"><g class="float"><circle r="26" fill="#F2B544"></circle><text y="10" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="28" font-weight="800" fill="#0E1E3D">?</text></g></g>
+<g transform="translate(70 230)"><g class="float2"><circle r="20" fill="#4C7BF3"></circle><text y="8" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">?</text></g></g>
+<g transform="translate(420 236)"><g class="float3"><circle r="14" fill="#F27A5E"></circle><text y="6" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">!</text></g></g>
+</svg>
+</div>
+</div>
+
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 16px">
+<div class="lift" style="padding: 26px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E4E8F0; display: flex; gap: 18px; align-items: flex-start">
+<span class="ico" style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 14px; background: #FDEBE6; color: #C2462A; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path></svg></span>
+<p style="margin: 0; font-size: 16px; font-weight: 500; color: #182136; padding-top: 2px">Dạy đi dạy lại một chữ nhưng trẻ vẫn không nhớ.</p>
+</div>
+<div class="lift" style="padding: 26px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E4E8F0; display: flex; gap: 18px; align-items: flex-start">
+<span class="ico" style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 14px; background: #E8EEFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg></span>
+<p style="margin: 0; font-size: 16px; font-weight: 500; color: #182136; padding-top: 2px">Trẻ nhận diện được chữ nhưng không biết ghép vần, đọc tiếng.</p>
+</div>
+<div class="lift" style="padding: 26px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E4E8F0; display: flex; gap: 18px; align-items: flex-start">
+<span class="ico" style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 14px; background: #FFF4DC; color: #8A5A00; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"></path><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"></path></svg></span>
+<p style="margin: 0; font-size: 16px; font-weight: 500; color: #182136; padding-top: 2px">Trẻ đọc được từng tiếng nhưng chưa đọc trôi chảy.</p>
+</div>
+<div class="lift" style="padding: 26px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E4E8F0; display: flex; gap: 18px; align-items: flex-start">
+<span class="ico" style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 14px; background: #E3F7F0; color: #1F8A6B; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></span>
+<p style="margin: 0; font-size: 16px; font-weight: 500; color: #182136; padding-top: 2px">Trẻ viết sai nét, sai độ cao, cầm bút chưa đúng.</p>
+</div>
+<div class="lift" style="padding: 26px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E4E8F0; display: flex; gap: 18px; align-items: flex-start">
+<span class="ico" style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 14px; background: #F1EAFE; color: #6B3FD0; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path></svg></span>
+<p style="margin: 0; font-size: 16px; font-weight: 500; color: #182136; padding-top: 2px">Trẻ mất tập trung, không hợp tác, học trước quên sau.</p>
+</div>
+<div class="lift" style="padding: 26px; border-radius: 22px; background: #FFFFFF; border: 1px solid #E4E8F0; display: flex; gap: 18px; align-items: flex-start">
+<span class="ico" style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 14px; background: #E6F3FB; color: #1D6E9E; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-7"></path><path d="M4 10V3"></path><path d="M12 21v-9"></path><path d="M12 8V3"></path><path d="M20 21v-5"></path><path d="M20 12V3"></path><path d="M1 14h6"></path><path d="M9 8h6"></path><path d="M17 16h6"></path></svg></span>
+<p style="margin: 0; font-size: 16px; font-weight: 500; color: #182136; padding-top: 2px">Bạn có giáo án nhưng chưa biết cách điều chỉnh khi năng lực mỗi trẻ khác nhau.</p>
+</div>
+</div>
+
+<div class="rv-z" style="position: relative; overflow: hidden; border-radius: 32px; background: #0E1E3D; color: #FFFFFF; padding: clamp(32px, 4.5vw, 56px); display: flex; flex-wrap: wrap; gap: 32px 48px; align-items: center">
+<div aria-hidden="true" class="orb" style="position: absolute; width: 420px; height: 420px; right: -140px; top: -180px; border-radius: 50%; background: radial-gradient(circle, rgba(242,181,68,0.25), rgba(242,181,68,0) 70%)"></div>
+<svg aria-hidden="true" width="96" height="112" viewBox="0 0 96 112" style="position: relative; flex-shrink: 0">
+<g stroke="#F2B544" stroke-width="3.5" stroke-linecap="round"><line class="wave" x1="48" y1="4" x2="48" y2="14"></line><line class="wave" style="animation-delay: .3s" x1="14" y1="18" x2="21" y2="25"></line><line class="wave" style="animation-delay: .6s" x1="82" y1="18" x2="75" y2="25"></line><line class="wave" style="animation-delay: .9s" x1="4" y1="50" x2="13" y2="50"></line><line class="wave" style="animation-delay: 1.2s" x1="92" y1="50" x2="83" y2="50"></line></g>
+<path d="M48 26 C 30 26, 22 40, 22 52 C 22 64, 32 70, 34 80 L 62 80 C 64 70, 74 64, 74 52 C 74 40, 66 26, 48 26 Z" fill="#F2B544"></path>
+<path d="M40 60 L 48 52 L 56 60" fill="none" stroke="#0E1E3D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+<rect x="35" y="84" width="26" height="8" rx="3" fill="#C4CCDB"></rect><rect x="38" y="95" width="20" height="8" rx="3" fill="#9AA5BA"></rect>
+</svg>
+<div style="position: relative; flex: 999 1 420px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: clamp(20px, 2.2vw, 27px); font-weight: 700; line-height: 1.4; letter-spacing: -0.4px">Vấn đề không phải lúc nào cũng nằm ở việc giáo viên chưa đủ kiên nhẫn. Đôi khi, điều giáo viên đang thiếu là <span style="color: #F2B544">một phương pháp rõ ràng và kỹ năng xử lý phù hợp.</span></p>
+<p style="margin: 0; font-size: 16px; color: #C4CCDB">Tại SmartKey, chúng tôi mong muốn giúp giáo viên hiểu nguyên nhân, tìm đúng điểm trẻ đang gặp khó khăn và biết cách hướng dẫn từng bước.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= 03 METHOD ================= -->
+<section id="phuong-phap" style="background: #F4F6FA">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(16px, 4vw, 40px); display: flex; flex-direction: column; gap: 52px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 18px; align-items: center; text-align: center">
+<span style="display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #FFF4DC; color: #8A5A00; font-size: 13px; font-weight: 700; letter-spacing: 1px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #F2B544"></span>03 · PHƯƠNG PHÁP ĐÀO TẠO</span>
+<h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.15; letter-spacing: -1.2px; color: #0E1E3D; max-width: 820px">SmartKey đào tạo giáo viên theo cách nào?</h2>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px">
+<span style="padding: 8px 18px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E4E8F0; font-size: 14px; font-weight: 700; color: #0E1E3D">Hiểu</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA5BA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+<span style="padding: 8px 18px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E4E8F0; font-size: 14px; font-weight: 700; color: #0E1E3D">Quan sát</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA5BA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+<span style="padding: 8px 18px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E4E8F0; font-size: 14px; font-weight: 700; color: #0E1E3D">Thực hành</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA5BA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+<span style="padding: 8px 18px; border-radius: 999px; background: #0E1E3D; border: 1px solid #0E1E3D; font-size: 14px; font-weight: 700; color: #FFFFFF">Được sửa lỗi</span>
+</div>
+</div>
+
+<div style="position: relative">
+<svg class="hide-sm" aria-hidden="true" viewBox="0 0 1000 10" preserveAspectRatio="none" style="position: absolute; left: 8%; right: 8%; top: 62px; width: 84%; height: 10px"><line class="flow" x1="0" y1="5" x2="1000" y2="5" stroke="#B7CAFB" stroke-width="2.5" stroke-linecap="round"></line></svg>
+<div class="rv" style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 18px">
+<div class="lift" style="position: relative; overflow: hidden; background: #FFFFFF; border: 1px solid #E4E8F0; border-radius: 24px; padding: 26px 22px; display: flex; flex-direction: column; gap: 16px">
+<span aria-hidden="true" style="position: absolute; right: 16px; top: 8px; font-size: 56px; font-weight: 800; color: #F0F3F9; line-height: 1">01</span>
+<span class="ico" style="position: relative; width: 76px; height: 76px; border-radius: 22px; background: #E8EEFF; display: flex; align-items: center; justify-content: center">
+<svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 44c2-10 8-14 16-14s14 4 16 14z" fill="#4C7BF3"></path><circle cx="24" cy="18" r="10" fill="#FFD7AE"></circle><path d="M14 17c0-7 5-11 10-11s10 4 10 10c-3-2-7-3-10-6-2 3-6 6-10 7z" fill="#0E1E3D"></path><path d="M40 6c-2-2-5-1-5 1 0-2-3-3-5-1-2 2 0 5 5 8 5-3 7-6 5-8z" fill="#F27A5E"></path></svg>
+</span>
+<span style="position: relative; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #2F5BD3">BƯỚC 1</span>
+<h3 style="position: relative; margin: 0; font-size: 20px; font-weight: 700; color: #0E1E3D; line-height: 1.3">Hiểu trẻ</h3>
+<p style="position: relative; margin: 0; font-size: 15px; color: #5A6478">Nhận biết đặc điểm phát triển, năng lực ngôn ngữ, khả năng tập trung và những khó khăn thường gặp ở trẻ trước lớp Một.</p>
+</div>
+<div class="lift" style="position: relative; overflow: hidden; background: #FFFFFF; border: 1px solid #E4E8F0; border-radius: 24px; padding: 26px 22px; display: flex; flex-direction: column; gap: 16px">
+<span aria-hidden="true" style="position: absolute; right: 16px; top: 8px; font-size: 56px; font-weight: 800; color: #F0F3F9; line-height: 1">02</span>
+<span class="ico" style="position: relative; width: 76px; height: 76px; border-radius: 22px; background: #FFF4DC; display: flex; align-items: center; justify-content: center">
+<svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 14c7-3 13-3 20 1v28c-7-4-13-4-20-1z" fill="#F2B544"></path><path d="M44 14c-7-3-13-3-20 1v28c7-4 13-4 20-1z" fill="#F7CB72"></path><circle cx="24" cy="8" r="6" fill="#4C7BF3"></circle><rect x="21" y="13" width="6" height="3" rx="1" fill="#0E1E3D"></rect><g stroke="#B07400" stroke-width="1.6" stroke-linecap="round"><line x1="9" y1="22" x2="19" y2="23"></line><line x1="9" y1="28" x2="19" y2="29"></line><line x1="29" y1="23" x2="39" y2="22"></line><line x1="29" y1="29" x2="39" y2="28"></line></g></svg>
+</span>
+<span style="position: relative; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #2F5BD3">BƯỚC 2</span>
+<h3 style="position: relative; margin: 0; font-size: 20px; font-weight: 700; color: #0E1E3D; line-height: 1.3">Hiểu phương pháp</h3>
+<p style="position: relative; margin: 0; font-size: 15px; color: #5A6478">Biết vì sao cần dạy kỹ năng đó, dạy từ đâu, theo trình tự nào và dựa vào điều gì để xác định trẻ đã tiếp thu.</p>
+</div>
+<div class="lift" style="position: relative; overflow: hidden; background: #FFFFFF; border: 1px solid #E4E8F0; border-radius: 24px; padding: 26px 22px; display: flex; flex-direction: column; gap: 16px">
+<span aria-hidden="true" style="position: absolute; right: 16px; top: 8px; font-size: 56px; font-weight: 800; color: #F0F3F9; line-height: 1">03</span>
+<span class="ico" style="position: relative; width: 76px; height: 76px; border-radius: 22px; background: #E3F7F0; display: flex; align-items: center; justify-content: center">
+<svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="8" width="40" height="28" rx="5" fill="#3DBE9B"></rect><path d="M10 22s5-8 14-8 14 8 14 8-5 8-14 8-14-8-14-8z" fill="#FFFFFF"></path><circle cx="24" cy="22" r="5" fill="#0E1E3D"></circle><circle cx="26" cy="20" r="1.6" fill="#FFFFFF"></circle><rect x="18" y="38" width="12" height="4" rx="2" fill="#2A9A7B"></rect></svg>
+</span>
+<span style="position: relative; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #2F5BD3">BƯỚC 3</span>
+<h3 style="position: relative; margin: 0; font-size: 20px; font-weight: 700; color: #0E1E3D; line-height: 1.3">Quan sát bài dạy</h3>
+<p style="position: relative; margin: 0; font-size: 15px; color: #5A6478">Theo dõi giáo viên hướng dẫn trẻ, phân tích thao tác, lời nói, cách giao nhiệm vụ và xử lý tình huống.</p>
+</div>
+<div class="lift" style="position: relative; overflow: hidden; background: #FFFFFF; border: 1px solid #E4E8F0; border-radius: 24px; padding: 26px 22px; display: flex; flex-direction: column; gap: 16px">
+<span aria-hidden="true" style="position: absolute; right: 16px; top: 8px; font-size: 56px; font-weight: 800; color: #F0F3F9; line-height: 1">04</span>
+<span class="ico" style="position: relative; width: 76px; height: 76px; border-radius: 22px; background: #FDEBE6; display: flex; align-items: center; justify-content: center">
+<svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="30" height="36" rx="5" fill="#FFFFFF" stroke="#F27A5E" stroke-width="2.5"></rect><g stroke="#F6B3A3" stroke-width="2" stroke-linecap="round"><line x1="12" y1="15" x2="28" y2="15"></line><line x1="12" y1="22" x2="26" y2="22"></line><line x1="12" y1="29" x2="22" y2="29"></line></g><g transform="rotate(40 34 30)"><rect x="30" y="12" width="8" height="26" rx="2" fill="#F2B544"></rect><path d="M30 38l4 7 4-7z" fill="#0E1E3D"></path></g></svg>
+</span>
+<span style="position: relative; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #2F5BD3">BƯỚC 4</span>
+<h3 style="position: relative; margin: 0; font-size: 20px; font-weight: 700; color: #0E1E3D; line-height: 1.3">Tự mình thực hành</h3>
+<p style="position: relative; margin: 0; font-size: 15px; color: #5A6478">Học viên thiết kế hoạt động, tập hướng dẫn và vận dụng phương pháp trong tình huống mô phỏng hoặc thực tế phù hợp.</p>
+</div>
+<div class="lift" style="position: relative; overflow: hidden; background: #0E1E3D; border: 1px solid #0E1E3D; border-radius: 24px; padding: 26px 22px; display: flex; flex-direction: column; gap: 16px">
+<span aria-hidden="true" style="position: absolute; right: 16px; top: 8px; font-size: 56px; font-weight: 800; color: rgba(255,255,255,0.07); line-height: 1">05</span>
+<span class="ico" style="position: relative; width: 76px; height: 76px; border-radius: 22px; background: rgba(242,181,68,0.16); display: flex; align-items: center; justify-content: center">
+<svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M16 30l-5 15 7-3 4 6 4-12z" fill="#4C7BF3"></path><path d="M32 30l5 15-7-3-4 6-4-12z" fill="#8FB0FA"></path><circle cx="24" cy="20" r="16" fill="#F2B544"></circle><path d="M17 20l5 5 9-10" fill="none" stroke="#0E1E3D" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+<span style="position: relative; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #F2B544">BƯỚC 5</span>
+<h3 style="position: relative; margin: 0; font-size: 20px; font-weight: 700; color: #FFFFFF; line-height: 1.3">Được sửa lỗi và đánh giá</h3>
+<p style="position: relative; margin: 0; font-size: 15px; color: #C4CCDB">Nhận phản hồi, điều chỉnh cách dạy và đánh giá lại cho đến khi đáp ứng tiêu chí đầu ra.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= 04 ROADMAP 60 ================= -->
+<section id="lo-trinh" style="background: #FFFFFF">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(16px, 4vw, 40px); display: flex; flex-direction: column; gap: 44px">
+<div class="rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 720px">
+<span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #FFF4DC; color: #8A5A00; font-size: 13px; font-weight: 700; letter-spacing: 1px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #F2B544"></span>04 · NỘI DUNG CHUYÊN MÔN</span>
+<h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.15; letter-spacing: -1.2px; color: #0E1E3D">Làm chủ lộ trình giảng dạy <span style="color: #2F5BD3">60 buổi</span></h2>
+</div>
+<span style="font-size: 14px; color: #5A6478; max-width: 380px"><strong style="color: #182136">Lưu ý:</strong> 60 buổi là lộ trình dành cho trẻ mà giáo viên được học cách triển khai; không phải thời lượng khóa đào tạo giáo viên.</span>
+</div>
+
+<!-- timeline bar -->
+<div class="rv" style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; height: 14px; border-radius: 999px; overflow: hidden; background: #EEF1F7">
+<span class="rv-x" style="display: block; width: 50%; background: #4C7BF3"></span>
+<span class="rv-x" style="display: block; width: 50%; background: #F2B544"></span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #5A6478"><span>Buổi 1</span><span>Buổi 30</span><span>Buổi 60</span></div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: 24px">
+<div class="rv-l">
+<div class="lift" style="height: 100%; border-radius: 30px; border: 1px solid #E4E8F0; overflow: hidden; display: flex; flex-direction: column; background: #FFFFFF">
+<div style="background: #EEF3FF; padding: 24px 24px 0">
+<svg role="img" aria-label="Minh hoạ ghép âm: b cộng a thành ba, đọc là bờ a ba" viewBox="0 0 480 200" style="width: 100%; height: auto; display: block">
+<g class="pop d1"><rect x="20" y="70" width="84" height="84" rx="22" fill="#FFFFFF"></rect><text x="62" y="129" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="50" font-weight="800" fill="#2F5BD3">b</text></g>
+<text x="128" y="124" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="32" font-weight="700" fill="#8FB0FA">+</text>
+<g class="pop d3"><rect x="152" y="70" width="84" height="84" rx="22" fill="#FFFFFF"></rect><text x="194" y="129" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="50" font-weight="800" fill="#B07400">a</text></g>
+<path d="M254 112 h 40" stroke="#8FB0FA" stroke-width="4" stroke-linecap="round"></path><path d="M286 102 l 12 10 -12 10" fill="none" stroke="#8FB0FA" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+<g class="pop d5"><rect x="314" y="62" width="118" height="100" rx="26" fill="#2F5BD3"></rect><text x="373" y="130" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="54" font-weight="800" fill="#FFFFFF">ba</text></g>
+<g fill="none" stroke="#4C7BF3" stroke-width="3.5" stroke-linecap="round"><path class="wave" d="M444 96 q 8 16 0 32"></path><path class="wave" style="animation-delay: .25s" d="M456 86 q 14 26 0 52"></path></g>
+<g class="float"><rect x="150" y="6" width="190" height="44" rx="22" fill="#0E1E3D"></rect><path d="M236 50 l 10 12 4 -12z" fill="#0E1E3D"></path><text x="245" y="35" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">bờ – a – ba</text></g>
+<rect x="0" y="180" width="480" height="20" fill="#FFFFFF"></rect>
+</svg>
+</div>
+<div style="padding: 8px 32px 34px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #2F5BD3">GIAI ĐOẠN 1</span><h3 style="margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.6px; color: #0E1E3D">Siêu Đánh Vần</h3></div>
+<span style="padding: 8px 16px; border-radius: 999px; background: #E8EEFF; color: #2F5BD3; font-weight: 700; font-size: 15px">30 buổi</span>
+</div>
+<p style="margin: 0; font-size: 15px; font-weight: 600; color: #182136">Giáo viên học cách tổ chức và hướng dẫn các kỹ năng nền tảng:</p>
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; border-radius: 50%; background: #E8EEFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 15px; color: #5A6478">Nhận diện chữ cái, âm và mối liên hệ chữ – âm.</span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; border-radius: 50%; background: #E8EEFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 15px; color: #5A6478">Hướng dẫn ghép âm, vần và tiếng theo trình tự phù hợp.</span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; border-radius: 50%; background: #E8EEFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 15px; color: #5A6478">Luyện đọc từ, câu và phát triển hiểu nội dung đọc.</span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; border-radius: 50%; background: #E8EEFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 15px; color: #5A6478">Phát hiện, phân tích và sửa lỗi đọc.</span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; border-radius: 50%; background: #E8EEFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 15px; color: #5A6478">Theo dõi sự tiến bộ của trẻ qua từng giai đoạn.</span></div>
+</div>
+</div>
+</div>
+
+<div class="rv-r">
+<div class="lift" style="height: 100%; border-radius: 30px; border: 1px solid #E4E8F0; overflow: hidden; display: flex; flex-direction: column; background: #FFFFFF">
+<div style="background: #FFF6E3; padding: 24px 24px 0">
+<svg role="img" aria-label="Minh hoạ vở ô ly với nét chữ viết tay và bút chì" viewBox="0 0 480 200" style="width: 100%; height: auto; display: block">
+<rect x="20" y="20" width="400" height="170" rx="18" fill="#FFFFFF"></rect>
+<rect x="20" y="20" width="26" height="170" rx="10" fill="#F2B544"></rect>
+<g fill="#FFFFFF"><circle cx="33" cy="48" r="4"></circle><circle cx="33" cy="88" r="4"></circle><circle cx="33" cy="128" r="4"></circle><circle cx="33" cy="168" r="4"></circle></g>
+<g stroke="#F3E3BF" stroke-width="1"><line x1="60" y1="60" x2="408" y2="60"></line><line x1="60" y1="76" x2="408" y2="76"></line><line x1="60" y1="92" x2="408" y2="92"></line><line x1="60" y1="108" x2="408" y2="108"></line><line x1="60" y1="124" x2="408" y2="124"></line><line x1="60" y1="140" x2="408" y2="140"></line><line x1="60" y1="156" x2="408" y2="156"></line>
+<line x1="108" y1="50" x2="108" y2="166"></line><line x1="172" y1="50" x2="172" y2="166"></line><line x1="236" y1="50" x2="236" y2="166"></line><line x1="300" y1="50" x2="300" y2="166"></line><line x1="364" y1="50" x2="364" y2="166"></line></g>
+<line x1="60" y1="140" x2="408" y2="140" stroke="#F27A5E" stroke-opacity="0.5" stroke-width="1.4"></line>
+<path class="write" pathLength="1" d="M92 116 C 84 104, 64 108, 66 124 C 68 140, 86 142, 92 130 M 92 110 C 92 124, 92 134, 100 140 M 152 116 C 144 104, 124 108, 126 124 C 128 140, 146 142, 152 130 M 152 110 C 152 124, 152 134, 160 140 M 128 96 q 10 10 20 0 M 214 116 C 206 104, 186 108, 188 124 C 190 140, 208 142, 214 130 M 214 110 C 214 124, 214 134, 222 140 M 190 100 l 12 -10 12 10 M 248 140 C 252 120, 258 92, 262 76 C 264 68, 272 70, 269 80 C 265 100, 259 122, 256 140 C 262 122, 274 114, 284 118 C 294 122, 292 140, 280 142 C 272 143, 264 140, 262 135 M 300 124 C 310 112, 330 114, 330 128 C 330 142, 312 144, 306 136 C 300 128, 316 114, 330 120 C 332 130, 330 138, 344 140" fill="none" stroke="#B07400" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"></path>
+<g transform="translate(396 112) rotate(-50)"><g class="float2">
+<rect x="0" y="-8" width="100" height="16" rx="3" fill="#4C7BF3"></rect><rect x="0" y="-8" width="100" height="5" rx="3" fill="#8FB0FA"></rect><rect x="88" y="-8" width="12" height="16" fill="#C9CFDB"></rect><rect x="100" y="-8" width="14" height="16" rx="4" fill="#F27A5E"></rect><path d="M0 -8 L -22 0 L 0 8 Z" fill="#F6D9AE"></path><path d="M-14 -3 L -22 0 L -14 3 Z" fill="#182136"></path>
+</g></g>
+</svg>
+</div>
+<div style="padding: 8px 32px 34px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #8A5A00">GIAI ĐOẠN 2</span><h3 style="margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.6px; color: #0E1E3D">Luyện viết vào lớp Một</h3></div>
+<span style="padding: 8px 16px; border-radius: 999px; background: #FFF4DC; color: #8A5A00; font-weight: 700; font-size: 15px">30 buổi</span>
+</div>
+<p style="margin: 0; font-size: 15px; font-weight: 600; color: #182136">Giáo viên học cách hướng dẫn:</p>
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; border-radius: 50%; background: #FFF4DC; color: #8A5A00; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 15px; color: #5A6478">Tư thế ngồi, cách cầm bút, đặt vở và các hoạt động vận động tinh.</span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; border-radius: 50%; background: #FFF4DC; color: #8A5A00; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 15px; color: #5A6478">Nét cơ bản và cấu tạo chữ.</span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; border-radius: 50%; background: #FFF4DC; color: #8A5A00; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 15px; color: #5A6478">Viết chữ, ghép chữ thành tiếng, từ và câu phù hợp.</span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; border-radius: 50%; background: #FFF4DC; color: #8A5A00; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 15px; color: #5A6478">Nhận diện và sửa các lỗi viết thường gặp.</span></div>
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; border-radius: 50%; background: #FFF4DC; color: #8A5A00; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 15px; color: #5A6478">Xây dựng thói quen viết cẩn thận, vừa sức, không gây áp lực quá mức.</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="rv" style="display: flex; gap: 20px; align-items: flex-start; padding: clamp(24px, 3vw, 36px); border-radius: 26px; background: #F4F6FA">
+<svg width="44" height="36" viewBox="0 0 44 36" aria-hidden="true" style="flex-shrink: 0"><path d="M0 36V22C0 9 7 2 18 0l2 5c-7 2-10 7-10 13h8v18zM24 36V22C24 9 31 2 42 0l2 5c-7 2-10 7-10 13h8v18z" fill="#F2B544"></path></svg>
+<p style="margin: 0; font-size: clamp(18px, 1.9vw, 22px); font-weight: 600; line-height: 1.5; color: #0E1E3D">Điều quan trọng không phải dạy trẻ hoàn thành 60 buổi bằng mọi giá, mà là biết đánh giá và điều chỉnh lộ trình phù hợp với khả năng học tập của trẻ.</p>
+</div>
+</div>
+</section>
+
+<!-- ================= 05 COURSE ================= -->
+<section id="khoa-hoc" style="position: relative; overflow: hidden; background: #0E1E3D; color: #FFFFFF">
+<div aria-hidden="true" class="orb2" style="position: absolute; width: 560px; height: 560px; left: -200px; top: -120px; border-radius: 50%; background: radial-gradient(circle, rgba(76,123,243,0.35), rgba(76,123,243,0) 70%)"></div>
+<div style="position: relative; max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(16px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: clamp(40px, 6vw, 80px); align-items: start">
+<div class="rv-l" style="display: flex; flex-direction: column; gap: 24px">
+<span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: rgba(242,181,68,0.14); border: 1px solid rgba(242,181,68,0.35); color: #F2B544; font-size: 13px; font-weight: 700; letter-spacing: 1px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #F2B544"></span>05 · KHÓA ĐÀO TẠO</span>
+<h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.15; letter-spacing: -1.2px">Khóa đào tạo gồm những gì?</h2>
+<p style="margin: 0; font-size: 17px; color: #C4CCDB">Lộ trình đề xuất gồm <strong style="color: #FFFFFF">8 tuần – 16 buổi – 5 học phần.</strong></p>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+<div class="lift-d" style="padding: 22px 18px; border-radius: 22px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); display: flex; flex-direction: column; gap: 2px"><span style="font-size: clamp(36px, 4vw, 48px); font-weight: 800; line-height: 1; color: #F2B544">8</span><span style="font-size: 14px; color: #C4CCDB">tuần</span></div>
+<div class="lift-d" style="padding: 22px 18px; border-radius: 22px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); display: flex; flex-direction: column; gap: 2px"><span style="font-size: clamp(36px, 4vw, 48px); font-weight: 800; line-height: 1; color: #F2B544">16</span><span style="font-size: 14px; color: #C4CCDB">buổi</span></div>
+<div class="lift-d" style="padding: 22px 18px; border-radius: 22px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); display: flex; flex-direction: column; gap: 2px"><span style="font-size: clamp(36px, 4vw, 48px); font-weight: 800; line-height: 1; color: #F2B544">5</span><span style="font-size: 14px; color: #C4CCDB">học phần</span></div>
+</div>
+<div style="padding: 26px; border-radius: 24px; background: #F2B544; color: #0E1E3D; display: flex; gap: 18px; align-items: flex-start">
+<span style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 14px; background: rgba(14,30,61,0.12); display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v1"></path><path d="M14 10V4a2 2 0 0 0-4 0v2"></path><path d="M10 10.5V6a2 2 0 0 0-4 0v8"></path><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 6px"><h3 style="margin: 0; font-size: 19px; font-weight: 800">Học đi đôi với thực hành.</h3><p style="margin: 0; font-size: 15px; color: #2A3550">Học viên không chỉ nghe hướng dẫn mà còn có nhiệm vụ thực hành, thiết kế giáo án, quan sát bài dạy và hoàn thành bài đánh giá cuối khóa.</p></div>
+</div>
+<p style="margin: 0; font-size: 14px; color: #9AA5BA">Lịch học, thời lượng và hình thức cụ thể được công bố khi mở tuyển sinh.</p>
+</div>
+<div class="rv-r" style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 2px; color: #9AA5BA; padding-bottom: 4px">5 HỌC PHẦN ĐÀO TẠO</span>
+<div class="row" style="display: flex; align-items: center; gap: 20px; padding: 20px 22px; border-radius: 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12)"><span style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 16px; background: rgba(242,181,68,0.15); color: #F2B544; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800">01</span><span style="flex: 1; font-size: 17px; font-weight: 600">Hiểu trẻ và phương pháp giáo dục SmartKey.</span></div>
+<div class="row" style="display: flex; align-items: center; gap: 20px; padding: 20px 22px; border-radius: 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12)"><span style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 16px; background: rgba(242,181,68,0.15); color: #F2B544; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800">02</span><span style="flex: 1; font-size: 17px; font-weight: 600">Kỹ thuật dạy chữ, âm, vần và đọc.</span></div>
+<div class="row" style="display: flex; align-items: center; gap: 20px; padding: 20px 22px; border-radius: 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12)"><span style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 16px; background: rgba(242,181,68,0.15); color: #F2B544; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800">03</span><span style="flex: 1; font-size: 17px; font-weight: 600">Phương pháp hướng dẫn luyện viết.</span></div>
+<div class="row" style="display: flex; align-items: center; gap: 20px; padding: 20px 22px; border-radius: 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12)"><span style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 16px; background: rgba(242,181,68,0.15); color: #F2B544; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800">04</span><span style="flex: 1; font-size: 17px; font-weight: 600">Kỹ thuật tổ chức buổi học và xử lý tình huống.</span></div>
+<div class="row" style="display: flex; align-items: center; gap: 20px; padding: 20px 22px; border-radius: 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12)"><span style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 16px; background: #F2B544; color: #0E1E3D; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800">05</span><span style="flex: 1; font-size: 17px; font-weight: 600">Thực hành, nhận phản hồi và đánh giá năng lực.</span></div>
+</div>
+</div>
+</section>
+
+<!-- ================= 06 OUTCOMES ================= -->
+<section style="background: #F4F6FA">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(16px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: clamp(40px, 6vw, 72px); align-items: center">
+<div class="rv-l" style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #FFF4DC; color: #8A5A00; font-size: 13px; font-weight: 700; letter-spacing: 1px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #F2B544"></span>06 · CHUẨN ĐẦU RA</span>
+<h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.15; letter-spacing: -1.2px; color: #0E1E3D">Sau khóa học, bạn có thể đạt được những gì?</h2>
+</div>
+<svg role="img" aria-label="Minh hoạ chứng nhận năng lực và biểu đồ tiến bộ" viewBox="0 0 480 320" style="width: 100%; max-width: 500px; height: auto; display: block">
+<circle cx="240" cy="170" r="140" fill="#E8EEFF"></circle>
+<g transform="rotate(-6 170 160)">
+<rect x="58" y="70" width="230" height="168" rx="18" fill="#FFFFFF"></rect>
+<rect x="72" y="84" width="202" height="140" rx="10" fill="none" stroke="#F2B544" stroke-width="2" stroke-dasharray="4 5"></rect>
+<text x="173" y="122" text-anchor="middle" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="15" font-weight="800" fill="#0E1E3D">CHỨNG NHẬN</text>
+<rect x="110" y="134" width="126" height="8" rx="4" fill="#DCE5FD"></rect>
+<rect x="124" y="150" width="98" height="8" rx="4" fill="#EEF1F7"></rect>
+<rect x="100" y="182" width="60" height="5" rx="2.5" fill="#C4CCDB"></rect>
+<g transform="translate(232 196)"><circle r="24" fill="#F2B544"></circle><circle r="16" fill="none" stroke="#FFFFFF" stroke-width="2"></circle><path d="M-6 0l4 4 8-9" fill="none" stroke="#0E1E3D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path><path d="M-14 20l-6 22 10-5 6 8 4-20z" fill="#4C7BF3"></path><path d="M14 20l6 22-10-5-6 8-4-20z" fill="#2F5BD3"></path></g>
+</g>
+<g class="float2">
+<rect x="270" y="132" width="180" height="150" rx="22" fill="#0E1E3D"></rect>
+<text x="290" y="164" font-family="Be Vietnam Pro, system-ui, sans-serif" font-size="13" font-weight="700" fill="#C4CCDB">Năng lực giảng dạy</text>
+<g><rect class="bar d2" x="292" y="222" width="20" height="40" rx="5" fill="#2F5BD3"></rect><rect class="bar d3" x="322" y="206" width="20" height="56" rx="5" fill="#4C7BF3"></rect><rect class="bar d4" x="352" y="192" width="20" height="70" rx="5" fill="#8FB0FA"></rect><rect class="bar d5" x="382" y="176" width="20" height="86" rx="5" fill="#F2B544"></rect><rect class="bar d6" x="412" y="184" width="20" height="78" rx="5" fill="#F7CB72"></rect></g>
+<path class="draw" pathLength="1" d="M302 214 L 332 198 L 362 184 L 392 166" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"></path>
+<circle cx="392" cy="166" r="5" fill="#FFFFFF"></circle>
+</g>
+<path class="tw" d="M70 50 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z" fill="#F2B544"></path>
+<path class="tw" style="animation-delay: 1s" d="M430 80 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z" fill="#4C7BF3"></path>
+<path class="tw" style="animation-delay: 1.8s" d="M40 260 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#3DBE9B"></path>
+</svg>
+</div>
+<div class="rv-r" style="display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0 0 6px; font-size: 17px; color: #5A6478">Khi hoàn thành chương trình và đáp ứng yêu cầu đánh giá, học viên được kỳ vọng có thể:</p>
+<div class="lift" style="display: flex; gap: 16px; align-items: center; padding: 16px 20px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E4E8F0"><span style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 10px; background: #E3F7F0; color: #1F8A6B; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 16px; font-weight: 500; color: #182136">Hiểu được năng lực học tập ban đầu của trẻ.</span></div>
+<div class="lift" style="display: flex; gap: 16px; align-items: center; padding: 16px 20px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E4E8F0"><span style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 10px; background: #E3F7F0; color: #1F8A6B; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 16px; font-weight: 500; color: #182136">Xác định mục tiêu và xây dựng kế hoạch giảng dạy.</span></div>
+<div class="lift" style="display: flex; gap: 16px; align-items: center; padding: 16px 20px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E4E8F0"><span style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 10px; background: #E3F7F0; color: #1F8A6B; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 16px; font-weight: 500; color: #182136">Hướng dẫn trẻ học chữ, đánh vần, đọc và luyện viết.</span></div>
+<div class="lift" style="display: flex; gap: 16px; align-items: center; padding: 16px 20px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E4E8F0"><span style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 10px; background: #E3F7F0; color: #1F8A6B; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 16px; font-weight: 500; color: #182136">Phát hiện lỗi và lựa chọn cách hỗ trợ phù hợp.</span></div>
+<div class="lift" style="display: flex; gap: 16px; align-items: center; padding: 16px 20px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E4E8F0"><span style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 10px; background: #E3F7F0; color: #1F8A6B; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 16px; font-weight: 500; color: #182136">Thiết kế và tổ chức một buổi dạy có mục tiêu rõ ràng.</span></div>
+<div class="lift" style="display: flex; gap: 16px; align-items: center; padding: 16px 20px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E4E8F0"><span style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 10px; background: #E3F7F0; color: #1F8A6B; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 16px; font-weight: 500; color: #182136">Quan sát, ghi nhận sự tiến bộ và điều chỉnh lộ trình.</span></div>
+<div class="lift" style="display: flex; gap: 16px; align-items: center; padding: 16px 20px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E4E8F0"><span style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 10px; background: #E3F7F0; color: #1F8A6B; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span><span style="font-size: 16px; font-weight: 500; color: #182136">Trao đổi với phụ huynh về tình hình học tập của trẻ.</span></div>
+<p style="margin: 14px 0 0; font-size: clamp(19px, 2vw, 23px); font-weight: 700; line-height: 1.45; letter-spacing: -0.3px; color: #0E1E3D">Không chỉ tự tin vì có giáo án, mà <span style="background: linear-gradient(transparent 60%, rgba(242,181,68,0.5) 60%)">tự tin vì hiểu mình cần làm gì</span> khi đứng trước một đứa trẻ thực sự.</p>
+</div>
+</div>
+</section>
+
+<!-- ================= 07 BENEFITS ================= -->
+<section id="quyen-loi" style="background: #FFFFFF">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(16px, 4vw, 40px); display: flex; flex-direction: column; gap: 44px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 18px; align-items: center; text-align: center">
+<span style="display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #FFF4DC; color: #8A5A00; font-size: 13px; font-weight: 700; letter-spacing: 1px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #F2B544"></span>07 · QUYỀN LỢI HỌC VIÊN</span>
+<h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.15; letter-spacing: -1.2px; color: #0E1E3D">Học viên nhận được quyền lợi gì?</h2>
+</div>
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px">
+<div class="lift" style="padding: 26px; border-radius: 24px; background: #F4F6FA; border: 1px solid #F4F6FA; display: flex; flex-direction: column; gap: 18px"><span class="ico" style="width: 52px; height: 52px; border-radius: 16px; background: #0E1E3D; color: #F2B544; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"></circle><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"></path></svg></span><span style="font-size: 16px; font-weight: 600; color: #182136">Được đào tạo theo phương pháp SmartKey.</span></div>
+<div class="lift" style="padding: 26px; border-radius: 24px; background: #F4F6FA; border: 1px solid #F4F6FA; display: flex; flex-direction: column; gap: 18px"><span class="ico" style="width: 52px; height: 52px; border-radius: 16px; background: #FFFFFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"></path><path d="M9 3v15"></path><path d="M15 6v15"></path></svg></span><span style="font-size: 16px; font-weight: 600; color: #182136">Được tiếp cận cấu trúc và mục tiêu của lộ trình giảng dạy 60 buổi.</span></div>
+<div class="lift" style="padding: 26px; border-radius: 24px; background: #F4F6FA; border: 1px solid #F4F6FA; display: flex; flex-direction: column; gap: 18px"><span class="ico" style="width: 52px; height: 52px; border-radius: 16px; background: #FFFFFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m10 8 6 4-6 4z"></path></svg></span><span style="font-size: 16px; font-weight: 600; color: #182136">Được quan sát, phân tích các bài dạy minh họa.</span></div>
+<div class="lift" style="padding: 26px; border-radius: 24px; background: #F4F6FA; border: 1px solid #F4F6FA; display: flex; flex-direction: column; gap: 18px"><span class="ico" style="width: 52px; height: 52px; border-radius: 16px; background: #FFFFFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span><span style="font-size: 16px; font-weight: 600; color: #182136">Được thực hành và nhận phản hồi.</span></div>
+<div class="lift" style="padding: 26px; border-radius: 24px; background: #F4F6FA; border: 1px solid #F4F6FA; display: flex; flex-direction: column; gap: 18px"><span class="ico" style="width: 52px; height: 52px; border-radius: 16px; background: #FFFFFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9l-.8-1.2A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"></path></svg></span><span style="font-size: 16px; font-weight: 600; color: #182136">Được sử dụng học liệu đào tạo, giáo án thực hành có chọn lọc theo phạm vi cấp phép.</span></div>
+<div class="lift" style="padding: 26px; border-radius: 24px; background: #F4F6FA; border: 1px solid #F4F6FA; display: flex; flex-direction: column; gap: 18px"><span class="ico" style="width: 52px; height: 52px; border-radius: 16px; background: #FFFFFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="m9 14 2 2 4-4"></path></svg></span><span style="font-size: 16px; font-weight: 600; color: #182136">Được đánh giá năng lực và nhận kết quả sau khóa học.</span></div>
+<div class="lift" style="padding: 26px; border-radius: 24px; background: #F4F6FA; border: 1px solid #F4F6FA; display: flex; flex-direction: column; gap: 18px"><span class="ico" style="width: 52px; height: 52px; border-radius: 16px; background: #FFFFFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.5 8.5-5-5L2 17"></path><path d="M16 7h6v6"></path></svg></span><span style="font-size: 16px; font-weight: 600; color: #182136">Được tiếp cận thông tin về các lộ trình chuyên môn nâng cao.</span></div>
+<div class="lift" style="padding: 26px; border-radius: 24px; background: #F4F6FA; border: 1px solid #F4F6FA; display: flex; flex-direction: column; gap: 18px"><span class="ico" style="width: 52px; height: 52px; border-radius: 16px; background: #F2B544; color: #0E1E3D; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span><span style="font-size: 16px; font-weight: 600; color: #182136">Có cơ hội đăng ký xét tuyển hoặc hợp tác cùng SmartKey theo chính sách từng thời kỳ.</span></div>
+</div>
+<div class="rv" style="display: flex; gap: 16px; align-items: flex-start; padding: 22px 26px; border-radius: 20px; background: #EEF3FF; border: 1px solid #D6E1FC">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2F5BD3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 1px"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+<p style="margin: 0; font-size: 15px; color: #182136"><strong>Quyền sử dụng trọn bộ chương trình 60 buổi và quyền triển khai dưới thương hiệu SmartKey không tự động đi kèm khóa học.</strong> Các quyền này thuộc chương trình chuyển giao hoặc hợp tác riêng.</p>
+</div>
+</div>
+</section>
+
+<!-- ================= 08 TWO PATHS ================= -->
+<section style="background: #F4F6FA">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(16px, 4vw, 40px); display: flex; flex-direction: column; gap: 44px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 18px; align-items: center; text-align: center">
+<span style="display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #FFF4DC; color: #8A5A00; font-size: 13px; font-weight: 700; letter-spacing: 1px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #F2B544"></span>08 · ĐỊNH HƯỚNG NGHỀ NGHIỆP</span>
+<h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.15; letter-spacing: -1.2px; color: #0E1E3D">Hai con đường phát triển sau đào tạo</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: 24px">
+<div class="rv-l">
+<div class="lift" style="height: 100%; border-radius: 30px; background: #FFFFFF; border: 1px solid #E4E8F0; overflow: hidden; display: flex; flex-direction: column">
+<svg role="img" aria-label="Minh hoạ con đường dẫn tới lá cờ" viewBox="0 0 520 200" style="width: 100%; height: auto; display: block; background: #EEF3FF">
+<circle cx="440" cy="52" r="26" fill="#F2B544"></circle>
+<path d="M0 170 Q 130 120 260 150 T 520 120 V 200 H 0z" fill="#DCE5FD"></path>
+<path d="M30 200 C 120 160, 160 130, 250 140 S 380 110, 400 80" fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round"></path>
+<path class="flow" d="M30 200 C 120 160, 160 130, 250 140 S 380 110, 400 80" fill="none" stroke="#8FB0FA" stroke-width="3" stroke-linecap="round"></path>
+<line x1="404" y1="80" x2="404" y2="20" stroke="#0E1E3D" stroke-width="3.5" stroke-linecap="round"></line>
+<path class="flag" d="M405 22 h 44 l -10 12 l 10 12 h -44z" fill="#2F5BD3"></path>
+<circle cx="404" cy="82" r="6" fill="#0E1E3D"></circle>
+</svg>
+<div style="padding: 30px 34px 36px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #2F5BD3">CON ĐƯỜNG 1</span>
+<h3 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; color: #0E1E3D; line-height: 1.25">Phát triển nghề nghiệp độc lập</h3>
+<p style="margin: 0; font-size: 16px; color: #5A6478">Ứng dụng kiến thức, kỹ năng và học liệu được cấp phép vào công việc giảng dạy phù hợp với năng lực và điều kiện pháp lý của bản thân.</p>
+</div>
+</div>
+</div>
+<div class="rv-r">
+<div class="lift" style="height: 100%; border-radius: 30px; background: #0E1E3D; border: 1px solid #0E1E3D; overflow: hidden; display: flex; flex-direction: column; color: #FFFFFF">
+<svg role="img" aria-label="Minh hoạ học viên kết nối hợp tác cùng SmartKey" viewBox="0 0 520 200" style="width: 100%; height: auto; display: block; background: #16295A">
+<path class="flow" d="M150 100 C 210 40, 310 40, 370 100" fill="none" stroke="#F2B544" stroke-width="3" stroke-linecap="round"></path>
+<path class="flow" d="M150 100 C 210 160, 310 160, 370 100" fill="none" stroke="#8FB0FA" stroke-width="3" stroke-linecap="round"></path>
+<g transform="translate(120 100)"><circle r="46" fill="#4C7BF3"></circle><circle cy="-10" r="15" fill="#FFD7AE"></circle><path d="M-26 30 C -22 10, 22 10, 26 30z" fill="#FFFFFF"></path><path d="M-15 -14c0-10 6-16 15-16s15 6 15 15c-6-3-11-6-15-10-3 5-9 9-15 11z" fill="#0E1E3D"></path></g>
+<g transform="translate(400 100)"><circle r="46" fill="#F2B544"></circle><circle cx="-8" cy="6" r="13" fill="none" stroke="#0E1E3D" stroke-width="5"></circle><path d="M2 -4 L 22 -24 M 15 -17 l 6 6 M 9 -11 l 5 5" stroke="#0E1E3D" stroke-width="5" stroke-linecap="round"></path></g>
+<g transform="translate(260 100)"><circle r="22" fill="#FFFFFF"></circle><path d="M-9 0l6 6 12-12" fill="none" stroke="#1F8A6B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></g>
+<path class="tw" d="M60 40 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#F2B544"></path>
+<path class="tw" style="animation-delay: 1s" d="M470 160 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#8FB0FA"></path>
+</svg>
+<div style="padding: 30px 34px 36px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #F2B544">CON ĐƯỜNG 2</span>
+<h3 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; color: #FFFFFF; line-height: 1.25">Đồng hành cùng SmartKey</h3>
+<p style="margin: 0; font-size: 16px; color: #C4CCDB">Những học viên có năng lực, thái độ và định hướng phù hợp có thể đăng ký tham gia quy trình tuyển chọn hợp tác.</p>
+<p style="margin: 0; font-size: 14px; color: #9AA5BA; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.14)">Cơ hội hợp tác phụ thuộc vào nhu cầu thực tế, kết quả đánh giá và thỏa thuận giữa hai bên; không phải cam kết tuyển dụng hoặc bảo đảm thu nhập.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= 09 INSTRUCTOR ================= -->
+<section style="background: #FFFFFF">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(16px, 4vw, 40px); display: flex; flex-direction: column; gap: 40px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(32px, 5vw, 64px); align-items: center">
+<div class="rv-l" style="position: relative; max-width: 480px; width: 100%; justify-self: center">
+<div style="aspect-ratio: 4 / 4.4; border-radius: 32px; background: #EEF3FF; overflow: hidden; position: relative; display: flex; align-items: flex-end; justify-content: center">
+<svg aria-hidden="true" viewBox="0 0 400 440" style="width: 100%; height: 100%; display: block; position: absolute; inset: 0">
+<circle cx="200" cy="190" r="150" fill="#DCE5FD"></circle>
+<path d="M70 440 C 80 340, 140 300, 200 300 S 320 340, 330 440z" fill="#4C7BF3"></path>
+<circle cx="200" cy="200" r="72" fill="#FFD7AE"></circle>
+<path d="M124 210 C 112 120, 170 100, 204 104 C 250 106, 290 140, 278 214 C 266 180, 240 160, 200 150 C 176 170, 150 186, 124 210z" fill="#0E1E3D"></path>
+<path d="M124 210 C 118 260, 130 300, 150 320 L 160 250z" fill="#0E1E3D"></path>
+<path d="M278 214 C 284 260, 272 300, 252 320 L 242 250z" fill="#0E1E3D"></path>
+</svg>
+<span style="position: relative; margin-bottom: 18px; padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,0.9); font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #5A6478">[ẢNH CÔ PHƯỢNG]</span>
+</div>
+<div class="float2" style="position: absolute; right: -12px; top: 28px; padding: 12px 16px; border-radius: 16px; background: #0E1E3D; color: #FFFFFF; box-shadow: 0 18px 40px -12px rgba(14,30,61,0.5); display: flex; align-items: center; gap: 10px">
+<span style="width: 30px; height: 30px; border-radius: 10px; background: #F2B544; color: #0E1E3D; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c3 2 9 2 12 0v-5"></path></svg></span>
+<span style="font-size: 13px; font-weight: 700">Cô Phượng</span>
+</div>
+<div class="float3" style="position: absolute; left: -12px; bottom: 60px; padding: 12px 16px; border-radius: 16px; background: #FFFFFF; color: #182136; box-shadow: 0 18px 40px -12px rgba(14,30,61,0.35); font-size: 13px; font-weight: 700">Đội ngũ chuyên môn SmartKey</div>
+</div>
+<div class="rv-r" style="display: flex; flex-direction: column; gap: 20px">
+<span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #FFF4DC; color: #8A5A00; font-size: 13px; font-weight: 700; letter-spacing: 1px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #F2B544"></span>09 · NGƯỜI HƯỚNG DẪN &amp; THỰC CHỨNG</span>
+<h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.15; letter-spacing: -1.2px; color: #0E1E3D">Học từ kinh nghiệm giảng dạy thực tế</h2>
+<p style="margin: 0; font-size: 17px; color: #5A6478">Cùng cô Phượng và đội ngũ chuyên môn SmartKey tìm hiểu những tình huống thường gặp khi dạy trẻ tiền tiểu học, quan sát cách hướng dẫn, phân tích lỗi và thực hành phương pháp.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px; padding-top: 6px">
+<div class="lift" style="padding: 18px; border-radius: 18px; background: #F4F6FA; border: 1px solid #F4F6FA; display: flex; gap: 14px; align-items: center"><span style="width: 44px; height: 44px; flex-shrink: 0; border-radius: 12px; background: #FFFFFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-5-5L5 21"></path></svg></span><span style="font-size: 14px; font-weight: 600; color: #182136">[Hình ảnh] Bài làm &amp; sự tiến bộ của trẻ</span></div>
+<div class="lift" style="padding: 18px; border-radius: 18px; background: #F4F6FA; border: 1px solid #F4F6FA; display: flex; gap: 14px; align-items: center"><span style="width: 44px; height: 44px; flex-shrink: 0; border-radius: 12px; background: #FFFFFF; color: #2F5BD3; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span><span style="font-size: 14px; font-weight: 600; color: #182136">[Phản hồi] Giáo viên đã tham gia đào tạo</span></div>
+</div>
+</div>
+</div>
+
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px">
+<div class="vid lift" style="border-radius: 24px; overflow: hidden; border: 1px solid #E4E8F0; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="aspect-ratio: 16 / 9; position: relative; background: #0E1E3D; display: flex; align-items: center; justify-content: center; overflow: hidden">
+<span aria-hidden="true" style="position: absolute; left: 18px; top: 10px; font-size: 64px; font-weight: 800; color: rgba(255,255,255,0.06)">Aa</span>
+<span class="play pulse" style="width: 64px; height: 64px; border-radius: 50%; background: #F2B544; color: #0E1E3D; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
+<span style="position: absolute; left: 14px; bottom: 12px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,0.14); color: #FFFFFF; font-size: 11px; font-weight: 700; letter-spacing: 1px">[VIDEO THỰC TẾ]</span>
+</div>
+<span style="padding: 18px 20px 20px; font-size: 15px; font-weight: 600; color: #182136">Cô Phượng hướng dẫn trẻ nhận diện chữ, đánh vần</span>
+</div>
+<div class="vid lift" style="border-radius: 24px; overflow: hidden; border: 1px solid #E4E8F0; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="aspect-ratio: 16 / 9; position: relative; background: #2F5BD3; display: flex; align-items: center; justify-content: center; overflow: hidden">
+<span aria-hidden="true" style="position: absolute; left: 18px; top: 10px; font-size: 64px; font-weight: 800; color: rgba(255,255,255,0.1)">✎</span>
+<span class="play pulse" style="width: 64px; height: 64px; border-radius: 50%; background: #F2B544; color: #0E1E3D; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
+<span style="position: absolute; left: 14px; bottom: 12px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,0.18); color: #FFFFFF; font-size: 11px; font-weight: 700; letter-spacing: 1px">[VIDEO THỰC TẾ]</span>
+</div>
+<span style="padding: 18px 20px 20px; font-size: 15px; font-weight: 600; color: #182136">Hướng dẫn luyện viết, chỉnh tư thế và thao tác</span>
+</div>
+<div class="vid lift" style="border-radius: 24px; overflow: hidden; border: 1px solid #E4E8F0; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="aspect-ratio: 16 / 9; position: relative; background: #16295A; display: flex; align-items: center; justify-content: center; overflow: hidden">
+<span aria-hidden="true" style="position: absolute; left: 18px; top: 10px; font-size: 64px; font-weight: 800; color: rgba(255,255,255,0.06)">?</span>
+<span class="play pulse" style="width: 64px; height: 64px; border-radius: 50%; background: #F2B544; color: #0E1E3D; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
+<span style="position: absolute; left: 14px; bottom: 12px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,0.14); color: #FFFFFF; font-size: 11px; font-weight: 700; letter-spacing: 1px">[VIDEO THỰC TẾ]</span>
+</div>
+<span style="padding: 18px 20px 20px; font-size: 15px; font-weight: 600; color: #182136">Phân tích tình huống trẻ học chậm, dễ quên</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= 10 REGISTRATION ================= -->
+<section id="dang-ky" style="position: relative; overflow: hidden; background: #0E1E3D; color: #FFFFFF">
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 28px 28px"></div>
+<div aria-hidden="true" class="orb" style="position: absolute; width: 600px; height: 600px; right: -160px; bottom: -240px; border-radius: 50%; background: radial-gradient(circle, rgba(242,181,68,0.25), rgba(242,181,68,0) 70%)"></div>
+<div style="position: relative; max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(16px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: clamp(40px, 6vw, 80px); align-items: center">
+<div class="rv-l" style="display: flex; flex-direction: column; gap: 22px">
+<span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: rgba(242,181,68,0.14); border: 1px solid rgba(242,181,68,0.35); color: #F2B544; font-size: 13px; font-weight: 700; letter-spacing: 1px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #F2B544"></span>10 · ĐĂNG KÝ ĐỒNG HÀNH CÙNG SMARTKEY</span>
+<h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 3.8vw, 46px); line-height: 1.18; letter-spacing: -1.2px">Bạn không cần phải biết tất cả ngay từ đầu. Nhưng bạn cần <span style="color: #F2B544">một lộ trình học tập đúng đắn.</span></h2>
+<p style="margin: 0; font-size: 17px; color: #C4CCDB">Nếu bạn muốn hiểu trẻ sâu hơn, giảng dạy có phương pháp và phát triển năng lực nghề nghiệp lâu dài, hãy bắt đầu bằng việc tìm hiểu chương trình đào tạo giáo viên SmartKey.</p>
+<svg role="img" aria-label="Minh hoạ máy bay giấy gửi đăng ký" viewBox="0 0 420 150" style="width: 100%; max-width: 420px; height: auto; display: block">
+<path class="flow" d="M10 130 C 80 140, 120 70, 190 90 S 280 120, 300 60" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2.5" stroke-linecap="round"></path>
+<g transform="translate(300 52)"><g class="float">
+<path d="M0 10 L 96 -36 L 60 42 L 40 22 Z" fill="#FFFFFF"></path>
+<path d="M40 22 L 96 -36 L 46 40 Z" fill="#C4CCDB"></path>
+<path d="M40 22 L 46 40 L 54 30 Z" fill="#9AA5BA"></path>
+</g></g>
+<path class="tw" d="M240 20 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#F2B544"></path>
+</svg>
+</div>
+<form class="rv-r" aria-label="Đăng ký nhận tư vấn" style="background: #FFFFFF; color: #182136; padding: clamp(28px, 4vw, 44px); border-radius: 32px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5)">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 24px; font-weight: 800; letter-spacing: -0.4px; color: #0E1E3D">Đăng ký nhận tư vấn lộ trình đào tạo phù hợp</span>
+<span style="font-size: 14px; color: #5A6478">Đội ngũ SmartKey sẽ liên hệ tư vấn cho bạn.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="f-name" style="font-size: 14px; font-weight: 600; color: #182136">Họ và tên <span style="color: #C2462A">*</span></label>
+<input id="f-name" type="text" required placeholder="Nguyễn Thị A" style="min-height: 50px; padding: 0 16px; border-radius: 14px; border: 1.5px solid #E4E8F0; background: #F8FAFC; font-size: 15px; color: #182136">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="f-phone" style="font-size: 14px; font-weight: 600; color: #182136">Số điện thoại / Zalo <span style="color: #C2462A">*</span></label>
+<input id="f-phone" type="tel" required placeholder="09xx xxx xxx" style="min-height: 50px; padding: 0 16px; border-radius: 14px; border: 1.5px solid #E4E8F0; background: #F8FAFC; font-size: 15px; color: #182136">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="f-job" style="font-size: 14px; font-weight: 600; color: #182136">Công việc hoặc kinh nghiệm giảng dạy hiện tại</label>
+<select id="f-job" style="min-height: 50px; padding: 0 14px; border-radius: 14px; border: 1.5px solid #E4E8F0; background: #F8FAFC; font-size: 15px; color: #182136">
+<option value="">Chọn công việc hiện tại</option>
+<option>Giáo viên mầm non</option>
+<option>Giáo viên tiểu học</option>
+<option>Gia sư</option>
+<option>Đã có kinh nghiệm làm việc với trẻ nhỏ</option>
+<option>Khác</option>
+</select>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="f-goal" style="font-size: 14px; font-weight: 600; color: #182136">Mục tiêu tham gia đào tạo</label>
+<textarea id="f-goal" rows="3" placeholder="Ví dụ: nâng cao kỹ năng dạy đánh vần, luyện viết cho trẻ chuẩn bị vào lớp Một…" style="padding: 14px 16px; border-radius: 14px; border: 1.5px solid #E4E8F0; background: #F8FAFC; font-size: 15px; color: #182136; resize: vertical; line-height: 1.5"></textarea>
+</div>
+<button class="btn" type="submit" style="min-height: 56px; border: 0; border-radius: 999px; background: #F2B544; color: #0E1E3D; font-size: 15px; font-weight: 800; letter-spacing: 0.3px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px">NHẬN TƯ VẤN CHƯƠNG TRÌNH ĐÀO TẠO<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></button>
+<p style="margin: 0; font-size: 13px; color: #5A6478; line-height: 1.55; text-align: center">Thông tin về học phí, lịch khai giảng, địa điểm và hình thức học sẽ được cung cấp theo thông báo tuyển sinh chính thức.</p>
+</form>
+</div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer style="background: #08132A; color: #C4CCDB">
+<div style="max-width: 1240px; margin: 0 auto; padding: 56px clamp(16px, 4vw, 40px) 30px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 460px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 42px; height: 42px; border-radius: 12px; background: #F2B544; color: #0E1E3D; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"></circle><path d="m10.85 12.15 8.65-8.65"></path><path d="m18 5 2 2"></path><path d="m15 8 2 2"></path></svg></span>
+<span style="font-weight: 800; font-size: 18px; letter-spacing: 0.5px; color: #FFFFFF">SMARTKEY TEACHER ACADEMY</span>
+</div>
+<p style="margin: 0; font-size: 18px; font-weight: 600; color: #F2B544">Trao phương pháp – Rèn năng lực – Mở cơ hội phát triển.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #FFFFFF">LIÊN HỆ</span>
+<span>Hotline / Zalo: [SỐ ĐIỆN THOẠI]</span>
+<span>Email: [ĐỊA CHỈ EMAIL]</span>
+<span>Địa chỉ: [ĐỊA CHỈ CƠ SỞ]</span>
+</div>
+</div>
+<div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #9AA5BA">
+<span>© 2026 SmartKey Teacher Academy. Bảo lưu mọi quyền.</span>
+<a href="#top" style="color: #C4CCDB; text-decoration: none">Về đầu trang ↑</a>
+</div>
+</div>
+</footer>
+
+</div>
+</body>
+</html>
