@@ -3,7 +3,9 @@
 Landing page giới thiệu chương trình **đào tạo giáo viên Tiền Tiểu Học** theo phương pháp SmartKey và nhận đăng ký tư vấn.
 Toàn bộ trang nằm trong một file `index.html`, không cần cài đặt hay build.
 
-- Trang online: https://lequyducmanh.github.io/smartkey-teacher-academy/
+- Trang online: https://smartkeyprep.vn (tên miền riêng, quản lý DNS tại Mắt Bão)
+- Địa chỉ GitHub gốc: https://lequyducmanh.github.io/smartkey-teacher-academy/ (tự chuyển về tên miền riêng)
+- Tên miền được khai báo trong file `CNAME`; đừng xoá file này.
 - GitHub Pages phát từ nhánh `gh-pages` (cập nhật cả `main` và `gh-pages` khi sửa trang).
 
 ## Kết nối form đăng ký với Google Sheet
