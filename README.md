@@ -49,7 +49,6 @@ dán URL vào giữa hai dấu nháy, rồi lưu/commit (trên GitHub: mở file
 
 Tìm các đoạn trong ngoặc vuông trong `index.html` và thay bằng nội dung thật:
 
-- `[ẢNH CÔ PHƯỢNG]` – ảnh chân dung người hướng dẫn.
 - `[VIDEO THỰC TẾ]` (3 video) – cô Phượng hướng dẫn trẻ nhận diện chữ, đánh vần; luyện viết; phân tích tình huống trẻ học chậm.
 - `[Hình ảnh]`, `[Phản hồi]` – bài làm của trẻ và phản hồi của giáo viên đã tham gia đào tạo.
 - `[SỐ ĐIỆN THOẠI]`, `[ĐỊA CHỈ EMAIL]`, `[ĐỊA CHỈ CƠ SỞ]` – thông tin liên hệ ở chân trang.
